@@ -1,8 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Images are bundled locally under /public; serve them directly without the
-  // optimizer so no extra runtime dependency (sharp) is required.
+  // Produce a fully static site in `out/` for Firebase Hosting.
+  output: "export",
+  // Required for static export — serve images directly without the optimizer.
   images: {
     unoptimized: true,
   },
