@@ -2,6 +2,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import FeatureBar from "@/components/sections/FeatureBar";
+import AiSearch from "@/components/sections/AiSearch";
 import Categories from "@/components/sections/Categories";
 import Products from "@/components/sections/Products";
 import Lookbook from "@/components/sections/Lookbook";
@@ -34,6 +35,7 @@ export default function Home() {
       <main id="main">
         <Hero />
         <FeatureBar />
+        <AiSearch />
         <Categories />
         <Products />
         <Lookbook />

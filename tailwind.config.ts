@@ -71,6 +71,8 @@ const config: Config = {
         marquee: "marquee 32s linear infinite",
         reveal: "revealIn .8s cubic-bezier(.16,1,.3,1) both",
         "bar-grow": "barGrow 1.6s cubic-bezier(.16,1,.3,1) forwards",
+        "scroll-up": "scrollUp 30s linear infinite",
+        "scroll-down": "scrollDown 30s linear infinite",
       },
       keyframes: {
         pulseDot: {
@@ -96,6 +98,14 @@ const config: Config = {
         barGrow: {
           from: { width: "0" },
           to: { width: "var(--w)" },
+        },
+        scrollUp: {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(-50%)" },
+        },
+        scrollDown: {
+          from: { transform: "translateY(-50%)" },
+          to: { transform: "translateY(0)" },
         },
       },
     },
