@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================================
+   Reusable component classes (ported from the original
+   <style type="text/tailwindcss"> block via @apply)
+   ============================================================= */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-semibold text-[14.5px] leading-none whitespace-nowrap transition-all duration-200 cursor-pointer no-underline;
+  }
+  .btn-primary {
+    @apply bg-grad-primary text-white shadow-[0_8px_24px_-8px_rgba(79,109,255,.55)] hover:-translate-y-0.5 hover:brightness-105 hover:shadow-[0_14px_32px_-10px_rgba(79,109,255,.65)] hover:text-white;
+  }
+  .btn-ghost {
+    @apply bg-transparent border border-line-strong text-ink dark:text-white dark:border-line-dark-strong hover:-translate-y-0.5 hover:bg-page-alt dark:hover:bg-page-dark-alt hover:border-brand;
+  }
+  .btn-sm {
+    @apply px-4 py-2.5 text-[13.5px];
+  }
+  .btn-lg {
+    @apply px-6 py-3.5 text-[15px];
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 font-sans font-semibold text-[12.5px] tracking-[.12em] uppercase text-brand;
+  }
+  .eyebrow-line::before {
+    content: "";
+    @apply inline-block w-8 h-0.5 rounded bg-grad-primary;
+  }
+
+  .field-input {
+    @apply w-full px-4 py-3 bg-white dark:bg-page-dark border-[1.5px] border-line dark:border-line-dark rounded-xl font-sans text-[14.5px] text-ink dark:text-white outline-none transition-all duration-200;
+  }
+  .field-input::placeholder {
+    @apply text-ink-mute;
+  }
+  .field-input:hover {
+    @apply border-line-strong dark:border-line-dark-strong;
+  }
+  .field-input:focus {
+    @apply border-brand;
+    box-shadow: 0 0 0 4px rgba(79, 109, 255, 0.12);
+  }
+  .field-input.has-error {
+    @apply border-red-500;
+    background-color: rgba(239, 68, 68, 0.04);
+  }
+  .field-input.has-error:focus {
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.12);
+  }
+}
+
+/* =============================================================
+   Custom effects (ported from css/style.css) — only things
+   Tailwind utilities can't easily express.
+   ============================================================= */
+
+/* ---------- Prevent horizontal overflow on small screens ----------
+   `clip` (unlike `hidden`) does not create a scroll container, so it
+   keeps the sticky header working while taming any decorative bleed. */
+body {
+  overflow-x: clip;
+}
+
+/* ---------- Anchor scroll offset for the sticky header ---------- */
+html {
+  scroll-padding-top: 84px;
+}
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: 124px;
+  }
+}
+
+/* ---------- Hero grid overlay (masked grid pattern) ---------- */
+.hero-grid {
+  background-image: linear-gradient(to right, rgba(79, 109, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(79, 109, 255, 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+}
+.dark .hero-grid {
+  background-image: linear-gradient(to right, rgba(138, 91, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(138, 91, 255, 0.1) 1px, transparent 1px);
+}
+
+/* ---------- Navbar scrolled state ---------- */
+#navbar.scrolled {
+  border-bottom-color: #e6e9f2;
+  background-color: rgba(255, 255, 255, 0.92);
+}
+.dark #navbar.scrolled {
+  border-bottom-color: #232a4a;
+  background-color: rgba(10, 13, 26, 0.92);
+}
+
+/* ---------- About image: graceful fallback when the photo fails ---------- */
+figure.img-failed .img-fallback {
+  display: grid;
+}
+
+/* ---------- Marquee: fade edges + hover-pause ---------- */
+.marquee {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ---------- Hamburger morph (open state) ---------- */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- Mobile drawer: open state ---------- */
+.drawer.open {
+  transform: translateX(0);
+}
+.drawer-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+/* When drawer is open, lock background scrolling */
+body.drawer-open {
+  overflow: hidden;
+  padding-right: var(--scrollbar-w, 0);
+}
+
+/* ---------- Active nav link ---------- */
+.nav-link.active {
+  color: #0b1020;
+  background-color: #eaeeff;
+}
+.dark .nav-link.active {
+  color: #ffffff;
+  background-color: rgba(79, 109, 255, 0.15);
+}
+
+/* ---------- Reveal animation entrance ---------- */
+[data-reveal].is-visible {
+  animation: revealIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes revealIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Form field: error reveal ---------- */
+.field-error.show {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ---------- Form field: valid state w/ checkmark ---------- */
+.field-input.is-valid {
+  border-color: #10b981 !important;
+  padding-right: 42px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px top 14px;
+  background-size: 16px 16px;
+}
+.field-input.is-valid:focus {
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12);
+}
+
+/* ---------- Form success banner ---------- */
+.form-success.show {
+  display: flex !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ---------- Back-to-top visible state ---------- */
+#backToTop.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Selection ---------- */
+::selection {
+  background: rgba(79, 109, 255, 0.25);
+  color: inherit;
+}
+
+/* ---------- Focus visible (consistent across UA) ---------- */
+:focus-visible {
+  outline: 2px solid #4f6dff;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Text inputs provide their own focus styling (container ring / box-shadow),
+   so suppress the global rectangular outline on them. */
+.search-field input:focus-visible,
+.field-input:focus-visible {
+  outline: none;
+}
