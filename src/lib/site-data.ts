@@ -234,49 +234,44 @@ export const BLOG_POSTS: BlogPost[] = [
 /* ---------- Testimonials ---------- */
 export type Testimonial = {
   name: string;
-  location: string;
   rating: number;
   quote: string;
-  product: string;
-  avatarClass: string;
+  avatar: string;
+  date: string;
 };
 
 export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Aisha Rahman",
-    location: "Dhaka, BD",
     rating: 5,
     quote:
-      "The quality blew me away — packaging felt premium and delivery was faster than promised. LuxCart is my new go-to for gifts.",
-    product: "Aurora Wireless Headphones",
-    avatarClass: "bg-gradient-to-br from-[#5b8dff] to-[#8a5bff]",
+      "The quality blew me away — packaging felt premium and delivery was faster than promised. LuxCart is honestly my new go-to for gifts and everyday finds.",
+    avatar: "/images/lifestyle/lookbook-women.jpg",
+    date: "11 Jun, 2025",
   },
   {
     name: "Marcus Thorne",
-    location: "London, UK",
     rating: 5,
     quote:
-      "Easy checkout, real product photos, and a return I never even needed. Everything just works the way you'd hope an online store would.",
-    product: "Heritage Leather Watch",
-    avatarClass: "bg-gradient-to-br from-emerald-500 to-cyan-500",
+      "Easy checkout, real product photos, and a return I never even needed. Everything just works the way you'd hope an online store would. Total game changer!",
+    avatar: "/images/lifestyle/lookbook-men.jpg",
+    date: "03 Jun, 2025",
   },
   {
     name: "Lina Kovač",
-    location: "Toronto, CA",
     rating: 5,
     quote:
-      "I've ordered four times now and every piece looks exactly like the listing. Beautiful curation and genuinely helpful support.",
-    product: "Linen Oversized Shirt",
-    avatarClass: "bg-gradient-to-br from-pink-500 to-[#8a5bff]",
+      "I've ordered four times now and every single piece looks exactly like the listing. Beautiful curation, fair prices and genuinely helpful support.",
+    avatar: "/images/instagram/ig-2.jpg",
+    date: "22 May, 2025",
   },
   {
     name: "Diego Martín",
-    location: "Madrid, ES",
     rating: 5,
     quote:
-      "Fast worldwide shipping and the customer service actually replied within minutes. Rare these days — I'm a customer for life.",
-    product: "Cloudstep Runner Sneakers",
-    avatarClass: "bg-gradient-to-br from-amber-500 to-pink-500",
+      "Fast worldwide shipping and the customer service actually replied within minutes. Rare these days — I'm a customer for life now.",
+    avatar: "/images/instagram/ig-1.jpg",
+    date: "15 May, 2025",
   },
 ];
 

@@ -226,3 +226,12 @@ body.drawer-open {
 .field-input:focus-visible {
   outline: none;
 }
+
+/* Hide scrollbar for swipeable carousels (keeps native scroll/swipe). */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}

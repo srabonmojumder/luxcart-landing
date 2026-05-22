@@ -109,7 +109,10 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
       </head>
-      <body className="font-sans text-ink dark:text-white bg-page dark:bg-page-dark antialiased transition-colors duration-300">
+      <body
+        className="font-sans text-ink dark:text-white bg-page dark:bg-page-dark antialiased transition-colors duration-300"
+        suppressHydrationWarning
+      >
         <CartProvider>{children}</CartProvider>
       </body>
     </html>
