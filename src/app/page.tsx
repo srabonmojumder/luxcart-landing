@@ -1,22 +1,14 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import Hero from "@/components/sections/Hero";
-import FeatureBar from "@/components/sections/FeatureBar";
-import AiSearch from "@/components/sections/AiSearch";
-import Categories from "@/components/sections/Categories";
-import Products from "@/components/sections/Products";
-import Lookbook from "@/components/sections/Lookbook";
-import PromoBanner from "@/components/sections/PromoBanner";
-import About from "@/components/sections/About";
-import StatsBand from "@/components/sections/StatsBand";
-import Testimonials from "@/components/sections/Testimonials";
-import Blog from "@/components/sections/Blog";
-import Instagram from "@/components/sections/Instagram";
-import Faq from "@/components/sections/Faq";
-import Newsletter from "@/components/sections/Newsletter";
+import HeroBanners from "@/components/sections/HeroBanners";
+import PopularCategories from "@/components/sections/PopularCategories";
+import DealRow from "@/components/sections/DealRow";
+import PromoBanners from "@/components/sections/PromoBanners";
+import AiBanner from "@/components/sections/AiBanner";
 import BackToTop from "@/components/ui/BackToTop";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import JsonLd from "@/components/seo/JsonLd";
+import { BEST_DEALS, WINTER_WEAR, TOP_ELECTRONICS, BEST_BEAUTY } from "@/lib/site-data";
 
 export default function Home() {
   return (
@@ -32,21 +24,15 @@ export default function Home() {
 
       <Header />
 
-      <main id="main">
-        <Hero />
-        <FeatureBar />
-        <AiSearch />
-        <Categories />
-        <Products />
-        <Lookbook />
-        <PromoBanner />
-        <About />
-        <StatsBand />
-        <Testimonials />
-        <Blog />
-        <Instagram />
-        <Faq />
-        <Newsletter />
+      <main id="main" className="bg-white dark:bg-page-dark">
+        <HeroBanners />
+        <PopularCategories />
+        <DealRow id="deals" title="Todays Best Deals For You!" products={BEST_DEALS} />
+        <PromoBanners />
+        <DealRow id="winter" title="60% Off Or More  On Winter-Wear" products={WINTER_WEAR} />
+        <AiBanner />
+        <DealRow id="electronics" title="Top Deals In Electronics" products={TOP_ELECTRONICS} />
+        <DealRow id="beauty" title="Best Sellers In Beauty & Health" products={BEST_BEAUTY} />
       </main>
 
       <Footer />

@@ -1,10 +1,16 @@
-import { PRODUCTS, FAQS, SOCIALS } from "@/lib/site-data";
+import { BEST_DEALS, SOCIALS } from "@/lib/site-data";
 
 /** Public site origin — used for canonical URLs and structured data. */
-export const SITE_URL = "https://www.luxcart.com";
-export const SITE_NAME = "LuxCart";
+export const SITE_URL = "https://www.luxecart.ae";
+export const SITE_NAME = "LuxeCart";
 
-/** Build the JSON-LD @graph (Organization, WebSite, ItemList of products, FAQPage). */
+/** "12k" -> 12000, "2.6k" -> 2600, "569" -> 569 */
+function reviewsToNumber(s: string): number {
+  const t = s.trim().toLowerCase();
+  return t.endsWith("k") ? Math.round(parseFloat(t) * 1000) : parseInt(t, 10) || 0;
+}
+
+/** Build the JSON-LD @graph (Organization, WebSite, ItemList of products). */
 export function buildStructuredData() {
   const organization = {
     "@type": "Organization",
@@ -13,14 +19,14 @@ export function buildStructuredData() {
     url: SITE_URL,
     logo: `${SITE_URL}/icon.svg`,
     description:
-      "LuxCart is a modern online store for curated fashion, footwear, watches, audio, home and beauty.",
+      "LuxeCart is the Middle East's everyday online marketplace for electronics, fashion, beauty, groceries and more — with fast delivery across the UAE.",
     sameAs: SOCIALS.map((s) => s.href),
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
-      email: "support@luxcart.com",
-      telephone: "+1-800-589-1234",
-      availableLanguage: ["English"],
+      email: "support@luxecart.ae",
+      telephone: "+971-4-000-0000",
+      availableLanguage: ["English", "Arabic"],
     },
   };
 
@@ -42,42 +48,31 @@ export function buildStructuredData() {
 
   const itemList = {
     "@type": "ItemList",
-    name: "Best selling products",
-    itemListElement: PRODUCTS.map((p, i) => ({
+    name: "Today's best deals",
+    itemListElement: BEST_DEALS.map((p, i) => ({
       "@type": "ListItem",
       position: i + 1,
       item: {
         "@type": "Product",
         name: p.name,
-        category: p.category,
         image: `${SITE_URL}${p.image}`,
         aggregateRating: {
           "@type": "AggregateRating",
           ratingValue: p.rating,
-          reviewCount: p.reviews,
+          reviewCount: Math.max(1, reviewsToNumber(p.reviews)),
         },
         offers: {
           "@type": "Offer",
           price: p.price.toFixed(2),
-          priceCurrency: "USD",
+          priceCurrency: "AED",
           availability: "https://schema.org/InStock",
         },
       },
     })),
   };
 
-  const faqPage = {
-    "@type": "FAQPage",
-    "@id": `${SITE_URL}/#faq`,
-    mainEntity: FAQS.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
-
   return {
     "@context": "https://schema.org",
-    "@graph": [organization, website, itemList, faqPage],
+    "@graph": [organization, website, itemList],
   };
 }

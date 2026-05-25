@@ -3,51 +3,55 @@ import { Sparkles, Mic } from "lucide-react";
 import BrandLogo from "@/components/ui/BrandLogo";
 
 /* Three columns that fill the card, scrolling vertically (alternating up/down)
-   on a seamless loop. Images are reused from the downloaded set. */
+   on a seamless loop. */
 type Col = { images: string[]; dir: "up" | "down"; duration: string };
 
 const COLUMNS: Col[] = [
   {
     images: [
-      "/images/lifestyle/lookbook-women.jpg",
-      "/images/products/aurora-headphones.jpg",
-      "/images/categories/beauty.jpg",
-      "/images/instagram/ig-2.jpg",
-      "/images/categories/watches.jpg",
-      "/images/products/pourover-set.jpg",
+      "/images/emox/categories/fashion.jpg",
+      "/images/emox/electronics/earbuds.jpg",
+      "/images/emox/categories/beauty.jpg",
+      "/images/emox/deals/hoodie-blue.jpg",
+      "/images/emox/categories/luxury.jpg",
+      "/images/emox/winter/jacket.jpg",
     ],
     dir: "up",
     duration: "34s",
   },
   {
     images: [
-      "/images/products/leather-tote.jpg",
-      "/images/instagram/ig-1.jpg",
-      "/images/categories/fashion.jpg",
-      "/images/lifestyle/lookbook-men.jpg",
-      "/images/products/skincare-bundle.jpg",
-      "/images/categories/audio.jpg",
+      "/images/emox/deals/earrings.jpg",
+      "/images/emox/electronics/macbook.jpg",
+      "/images/emox/categories/sneakers.jpg",
+      "/images/emox/beauty/perfume.jpg",
+      "/images/emox/electronics/ssd.jpg",
+      "/images/emox/deals/galaxy-ultra.jpg",
     ],
     dir: "down",
     duration: "40s",
   },
   {
     images: [
-      "/images/products/heritage-watch.jpg",
-      "/images/blog/blog-1.jpg",
-      "/images/instagram/ig-3.jpg",
-      "/images/products/cloudstep-sneakers.jpg",
-      "/images/categories/home.jpg",
-      "/images/products/polarized-sunglasses.jpg",
+      "/images/emox/deals/nike.jpg",
+      "/images/emox/beauty/foundation.jpg",
+      "/images/emox/electronics/tv.jpg",
+      "/images/emox/winter/sweater.jpg",
+      "/images/emox/categories/groceries.jpg",
+      "/images/emox/electronics/iphone.jpg",
     ],
     dir: "up",
     duration: "37s",
   },
 ];
 
-export default function AiSearch() {
+export default function AiBanner() {
   return (
-    <section className="py-[clamp(48px,8vw,96px)] bg-page dark:bg-page-dark" aria-label="AI-powered product search">
+    <section
+      id="emox-ai"
+      className="py-[clamp(48px,8vw,96px)] bg-page dark:bg-page-dark scroll-mt-32"
+      aria-label="AI-powered product search"
+    >
       <div className="container max-w-[1200px] mx-auto px-4 sm:px-6" data-reveal>
         {/* Gradient border wrapper */}
         <div className="p-[2px] rounded-[28px] bg-gradient-to-r from-brand-accent via-brand to-amber-400 shadow-big">
@@ -98,7 +102,7 @@ export default function AiSearch() {
                     <BrandLogo className="w-[26px] h-[26px]" gradientId="logoAi" />
                   </span>
                   <span className="font-display font-bold tracking-tight text-[clamp(26px,4.5vw,40px)] leading-none text-ink dark:text-white">
-                    Lux<span className="bg-grad-text bg-clip-text text-transparent">Cart AI</span>
+                    Luxe<span className="bg-grad-text bg-clip-text text-transparent">Cart AI</span>
                   </span>
                   <Sparkles size={22} className="text-brand-accent" aria-hidden="true" />
                 </div>
@@ -134,7 +138,7 @@ export default function AiSearch() {
                 {/* Quick suggestions */}
                 <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
                   <span className="text-[12.5px] text-ink-mute">Try:</span>
-                  {["Wireless headphones", "Summer dresses", "Running shoes"].map((q) => (
+                  {["iPhone 16 Pro Max", "Winter jackets", "Skincare"].map((q) => (
                     <button
                       key={q}
                       type="button"

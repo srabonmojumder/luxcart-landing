@@ -2,87 +2,79 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Star, Heart, Plus, Check } from "lucide-react";
-import { useCart } from "@/lib/cart";
+import { Star, StarHalf, Heart } from "lucide-react";
 import type { Product } from "@/lib/site-data";
 
-export default function ProductCard({ product }: { product: Product }) {
-  const { image, name, category, price, oldPrice, rating, reviews, badge } = product;
-  const { add } = useCart();
-  const [wished, setWished] = useState(false);
-  const [added, setAdded] = useState(false);
+function Stars({ rating }: { rating: number }) {
+  const full = Math.floor(rating);
+  const half = rating - full >= 0.5;
+  return (
+    <span className="inline-flex items-center" aria-label={`${rating} out of 5`}>
+      {Array.from({ length: 5 }).map((_, i) => {
+        if (i < full)
+          return <Star key={i} size={13} className="fill-amber-400 text-amber-400" aria-hidden="true" />;
+        if (i === full && half)
+          return <StarHalf key={i} size={13} className="fill-amber-400 text-amber-400" aria-hidden="true" />;
+        return <Star key={i} size={13} className="fill-gray-200 text-gray-200" aria-hidden="true" />;
+      })}
+    </span>
+  );
+}
 
-  const handleAdd = () => {
-    add(1);
-    setAdded(true);
-    window.setTimeout(() => setAdded(false), 1300);
-  };
+export default function ProductCard({ product }: { product: Product }) {
+  const { image, name, price, oldPrice, rating, reviews } = product;
+  const [wished, setWished] = useState(false);
 
   return (
     <article
       data-reveal
-      className="group flex flex-col bg-white dark:bg-surface-dark border border-line dark:border-line-dark rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-big hover:border-transparent"
+      className="group flex flex-col cursor-pointer rounded-2xl p-2.5 transition-all duration-300 hover:bg-white hover:shadow-big"
     >
-      {/* Product image */}
-      <div className="relative aspect-square overflow-hidden bg-page-alt dark:bg-page-dark-alt">
+      {/* Image */}
+      <div className="relative aspect-square overflow-hidden rounded-xl bg-[#f2f3f5] dark:bg-white/[0.04]">
         <Image
           src={image}
           alt={name}
           fill
-          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        {badge && (
-          <span className={`absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10.5px] font-bold uppercase tracking-[.06em] shadow-soft ${badge.className}`}>
-            {badge.label}
-          </span>
-        )}
         <button
           type="button"
-          onClick={() => setWished((w) => !w)}
+          onClick={(e) => {
+            e.preventDefault();
+            setWished((w) => !w);
+          }}
           aria-label={wished ? "Remove from wishlist" : "Add to wishlist"}
           aria-pressed={wished}
-          className="absolute top-3 right-3 grid place-items-center w-9 h-9 rounded-full bg-white/85 dark:bg-page-dark/75 backdrop-blur-sm text-ink-soft dark:text-white/70 shadow-soft transition-all hover:scale-110 hover:text-pink-500"
+          className="absolute top-2.5 right-2.5 grid place-items-center w-8 h-8 rounded-full bg-white/90 text-ink-soft shadow-soft ring-1 ring-line/70 transition-all hover:scale-110 hover:text-pink-500"
         >
-          <Heart size={16} strokeWidth={2} className={wished ? "fill-pink-500 text-pink-500" : ""} aria-hidden="true" />
+          <Heart size={15} strokeWidth={2} className={wished ? "fill-pink-500 text-pink-500" : ""} aria-hidden="true" />
         </button>
       </div>
 
       {/* Info */}
-      <div className="p-4 flex flex-col gap-1.5 flex-1">
-        <span className="text-[11.5px] font-semibold uppercase tracking-[.06em] text-ink-mute">{category}</span>
-        <h3 className="font-display font-bold text-[15px] leading-snug text-ink dark:text-white line-clamp-1">{name}</h3>
-        <div className="flex items-center gap-1 text-[12.5px] text-ink-soft dark:text-white/70">
-          <Star size={13} className="text-amber-500 fill-amber-500" aria-hidden="true" />
-          <span className="font-semibold text-ink dark:text-white">{rating.toFixed(1)}</span>
-          <span className="text-ink-mute">({reviews})</span>
+      <div className="flex flex-col gap-1.5 px-1 pt-3">
+        <h3 className="text-[13px] leading-snug text-ink-soft dark:text-white/80 line-clamp-2 min-h-[34px] group-hover:text-ink dark:group-hover:text-white">
+          {name}
+        </h3>
+
+        <div className="flex items-center gap-1.5">
+          <Stars rating={rating} />
+          <span className="text-[12px] text-ink-mute">({reviews})</span>
         </div>
 
-        <div className="mt-auto pt-3 flex flex-col gap-2.5">
-          <div className="flex items-baseline flex-wrap gap-x-2">
-            <span className="font-display font-bold text-[17px] text-ink dark:text-white">${price.toFixed(2)}</span>
-            {oldPrice && <span className="text-[13px] text-ink-mute line-through">${oldPrice.toFixed(2)}</span>}
-          </div>
-          <button
-            type="button"
-            onClick={handleAdd}
-            aria-label={`Add ${name} to cart`}
-            className={`w-full h-10 rounded-full flex items-center justify-center gap-1.5 text-[13.5px] font-semibold text-white transition-all shadow-[0_8px_24px_-10px_rgba(79,109,255,.6)] hover:-translate-y-0.5 active:translate-y-0 ${
-              added ? "bg-emerald-500" : "bg-grad-primary hover:brightness-105"
-            }`}
-          >
-            {added ? (
-              <>
-                <Check size={16} strokeWidth={3} aria-hidden="true" />
-                Added
-              </>
-            ) : (
-              <>
-                <Plus size={16} strokeWidth={2.5} aria-hidden="true" />
-                Add to cart
-              </>
-            )}
-          </button>
+        <div className="flex items-baseline flex-wrap gap-x-2 pt-0.5">
+          <span className="font-display font-bold text-[16px] text-ink dark:text-white">
+            {price.toFixed(2)}
+            <sup className="ml-0.5 text-[9px] font-semibold text-ink-mute align-super">AED</sup>
+          </span>
+          {oldPrice && (
+            <span className="text-[12px] text-ink-mute line-through">
+              {oldPrice.toFixed(2)}
+              <sup className="ml-0.5 text-[8px] align-super">AED</sup>
+            </span>
+          )}
         </div>
       </div>
     </article>

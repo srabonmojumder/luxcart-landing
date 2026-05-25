@@ -28,24 +28,23 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "LuxCart — Curated Essentials, Delivered | Fashion, Tech & Home",
-    template: "%s | LuxCart",
+    default: "LuxeCart — Online Shopping in UAE | Electronics, Fashion, Beauty & More",
+    template: "%s | LuxeCart",
   },
   description:
-    "Shop LuxCart for curated fashion, footwear, watches, audio, home & beauty. Free shipping over $50, easy 30-day returns, secure checkout and worldwide delivery.",
+    "Shop millions of products on LuxeCart — electronics, fashion, beauty, groceries & home. Best deals, fast delivery across the UAE, and an AI-powered shopping experience.",
   applicationName: SITE_NAME,
   keywords: [
-    "LuxCart",
-    "online store",
-    "ecommerce",
-    "buy fashion online",
-    "footwear",
-    "watches",
-    "wireless headphones",
-    "home & living",
-    "beauty products",
-    "free shipping",
-    "online shopping",
+    "LuxeCart",
+    "online shopping UAE",
+    "Dubai online store",
+    "electronics",
+    "fashion",
+    "beauty",
+    "groceries",
+    "best deals",
+    "iPhone 16 Pro Max",
+    "AI shopping",
   ],
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
@@ -58,20 +57,20 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
   openGraph: {
-    title: "LuxCart — Curated Essentials, Delivered",
+    title: "LuxeCart — Online Shopping in UAE",
     description:
-      "Shop curated fashion, footwear, watches, audio, home & beauty. Free shipping over $50 and easy 30-day returns.",
+      "Electronics, fashion, beauty, groceries & more. Best deals and fast delivery across the UAE.",
     url: SITE_URL,
     siteName: SITE_NAME,
     type: "website",
-    locale: "en_US",
-    images: [{ url: "/images/lifestyle/hero.jpg", width: 1000, height: 1100, alt: "LuxCart curated collection" }],
+    locale: "en_AE",
+    images: [{ url: "/images/emox/promo/vegetables.jpg", width: 1000, height: 560, alt: "LuxeCart marketplace deals" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "LuxCart — Curated Essentials, Delivered",
-    description: "Curated fashion, tech, home & beauty. Free shipping over $50, easy 30-day returns.",
-    images: ["/images/lifestyle/hero.jpg"],
+    title: "LuxeCart — Online Shopping in UAE",
+    description: "Electronics, fashion, beauty, groceries & more. Best deals, fast UAE delivery.",
+    images: ["/images/emox/promo/vegetables.jpg"],
   },
   icons: {
     icon:
@@ -80,18 +79,15 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0b1020",
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
 };
 
-// Applied before paint to avoid a light/dark flash on first load.
+// LuxeCart renders as a light marketplace; only honor an explicit dark preference.
 const themeBootstrap = `
 try {
-  var t = localStorage.getItem('luxcart-theme');
-  if (t === 'dark') document.documentElement.classList.add('dark');
-  else if (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    document.documentElement.classList.add('dark');
+  if (localStorage.getItem('luxecart-theme') === 'dark') document.documentElement.classList.add('dark');
 } catch (e) {}
 `;
 
