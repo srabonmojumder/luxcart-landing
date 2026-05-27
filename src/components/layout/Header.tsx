@@ -25,16 +25,21 @@ function Logo({ className = "" }: { className?: string }) {
   );
 }
 
-/* Tiny UAE flag */
-function FlagAE() {
+/* Country flag — pulls real flag from flagcdn.com by ISO-2 code (e.g. "AE", "BD"). */
+function Flag({ code }: { code: string }) {
+  const c = code.trim().toLowerCase();
   return (
-    <span className="relative inline-flex h-[18px] w-[18px] overflow-hidden rounded-full ring-1 ring-line">
-      <span className="absolute inset-y-0 left-0 w-[5px] bg-[#ce1126]" />
-      <span className="absolute inset-y-0 left-[5px] right-0 flex flex-col">
-        <span className="flex-1 bg-[#009739]" />
-        <span className="flex-1 bg-white" />
-        <span className="flex-1 bg-black" />
-      </span>
+    <span className="relative inline-flex h-[18px] w-[18px] overflow-hidden rounded-full ring-1 ring-line bg-page-alt">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`https://flagcdn.com/w40/${c}.png`}
+        srcSet={`https://flagcdn.com/w80/${c}.png 2x`}
+        alt={code.toUpperCase()}
+        width={18}
+        height={18}
+        loading="lazy"
+        className="h-full w-full object-cover"
+      />
     </span>
   );
 }
@@ -44,7 +49,7 @@ function SearchField({ id, autoFocus = false }: { id: string; autoFocus?: boolea
     <form
       role="search"
       onSubmit={(e) => e.preventDefault()}
-      className="flex items-center w-full h-11 rounded-full bg-page-alt dark:bg-white/[0.06] ring-1 ring-line focus-within:ring-2 focus-within:ring-brand/50 transition-all"
+      className="search-field flex items-center w-full h-11 rounded-full bg-page-alt dark:bg-white/[0.06] ring-1 ring-line focus-within:ring-2 focus-within:ring-brand/50 transition-all"
     >
       <input
         id={id}
@@ -70,6 +75,9 @@ export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [catOpen, setCatOpen] = useState(false);
+  const [city, setCity] = useState("Dubai");
+  const [countryCode, setCountryCode] = useState("AE");
+  const [locBusy, setLocBusy] = useState(false);
   const { count } = useCart();
   const closeBtnRef = useRef<HTMLButtonElement>(null);
 
@@ -79,6 +87,54 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  /* Initial city + country = IP-based lookup (no permission prompt). */
+  useEffect(() => {
+    let alive = true;
+    const apply = (name?: string | null, code?: string | null) => {
+      if (!alive) return;
+      if (name) setCity(name);
+      if (code) setCountryCode(code.toUpperCase());
+    };
+    fetch("https://ipwho.is/")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d: { success?: boolean; city?: string; country_code?: string } | null) => {
+        if (d?.success && (d.city || d.country_code)) apply(d.city, d.country_code);
+        else throw new Error("primary failed");
+      })
+      .catch(() =>
+        // Fallback if ipwho.is is unavailable or blocked.
+        fetch("https://get.geojs.io/v1/ip/geo.json")
+          .then((r) => (r.ok ? r.json() : null))
+          .then((d: { city?: string; country_code?: string } | null) => apply(d?.city, d?.country_code))
+          .catch(() => {})
+      );
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  /* Click handler: ask the browser for a precise location, reverse-geocode it. */
+  const detectPrecise = useCallback(() => {
+    if (typeof navigator === "undefined" || !navigator.geolocation || locBusy) return;
+    setLocBusy(true);
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        try {
+          const r = await fetch(
+            `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${pos.coords.latitude}&longitude=${pos.coords.longitude}&localityLanguage=en`
+          );
+          const d: { city?: string; locality?: string; principalSubdivision?: string; countryCode?: string } = await r.json();
+          const name = d.city || d.locality || d.principalSubdivision;
+          if (name) setCity(name);
+          if (d.countryCode) setCountryCode(d.countryCode.toUpperCase());
+        } catch {}
+        setLocBusy(false);
+      },
+      () => setLocBusy(false),
+      { timeout: 10000, maximumAge: 60000 }
+    );
+  }, [locBusy]);
 
   const closeDrawer = useCallback(() => setDrawerOpen(false), []);
 
@@ -109,7 +165,7 @@ export default function Header() {
         }`}
       >
         {/* ===== Top row ===== */}
-        <div className="container max-w-[1200px] mx-auto px-4 sm:px-6">
+        <div className="container max-w-[1280px] mx-auto px-4 sm:px-6">
           <div className="flex items-center gap-3 sm:gap-5 h-[68px]">
             {/* Logo */}
             <a href="#home" aria-label="LuxeCart — Home" className="flex-none">
@@ -123,21 +179,27 @@ export default function Header() {
 
             {/* Right cluster */}
             <div className="flex items-center gap-2 sm:gap-5 ml-auto">
-              {/* Delivery location */}
-              <button type="button" className="hidden lg:flex items-center gap-2 text-left group">
+              {/* Delivery location — IP-based on load, click to use precise geolocation */}
+              <button
+                type="button"
+                onClick={detectPrecise}
+                disabled={locBusy}
+                aria-label="Detect my current location"
+                className="hidden lg:flex items-center gap-2 text-left group disabled:opacity-60 disabled:cursor-wait"
+              >
                 <MapPin size={18} strokeWidth={2} className="text-ink-soft group-hover:text-brand transition-colors" aria-hidden="true" />
                 <span className="leading-tight">
-                  <span className="block text-[11px] text-ink-mute">Delivering to Dubai</span>
+                  <span className="block text-[11px] text-ink-mute">Delivering to {city}</span>
                   <span className="block text-[12.5px] font-semibold text-ink dark:text-white group-hover:text-brand transition-colors">
-                    Update Location
+                    {locBusy ? "Detecting…" : "Update Location"}
                   </span>
                 </span>
               </button>
 
-              {/* Country */}
+              {/* Country (dynamic — driven by IP / geolocation) */}
               <button type="button" className="hidden lg:flex items-center gap-1.5 text-[13px] font-semibold text-ink dark:text-white hover:text-brand transition-colors">
-                <FlagAE />
-                AE
+                <Flag code={countryCode} />
+                {countryCode}
                 <ChevronDown size={14} strokeWidth={2.5} aria-hidden="true" />
               </button>
 
@@ -188,7 +250,7 @@ export default function Header() {
 
         {/* ===== Category nav row (desktop) ===== */}
         <div className="hidden lg:block border-t border-line/80 dark:border-line-dark/80">
-          <div className="container max-w-[1200px] mx-auto px-6">
+          <div className="container max-w-[1280px] mx-auto px-6">
             <div className="flex items-center gap-6 h-11 text-[13px]">
               {/* All categories */}
               <div
@@ -282,7 +344,7 @@ export default function Header() {
               <User size={16} aria-hidden="true" /> Sign In
             </button>
             <button type="button" className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl border border-line text-sm font-semibold text-ink dark:text-white">
-              <FlagAE /> AE
+              <Flag code={countryCode} /> {countryCode}
             </button>
           </div>
 

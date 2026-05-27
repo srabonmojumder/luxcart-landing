@@ -64,7 +64,7 @@ export function buildStructuredData() {
         offers: {
           "@type": "Offer",
           price: p.price.toFixed(2),
-          priceCurrency: "AED",
+          priceCurrency: "USD",
           availability: "https://schema.org/InStock",
         },
       },

@@ -4,7 +4,7 @@ import { FaCcVisa, FaCcMastercard, FaCcPaypal, FaCcApplePay, FaGooglePay } from 
 
 /* =============================================================
    LuxeCart — marketplace homepage data
-   Currency: AED · Region: United Arab Emirates (Dubai)
+   Currency: USD ($) · Region: United Arab Emirates (Dubai)
    ============================================================= */
 
 /* ---------- Top category navigation (under the search bar) ---------- */
@@ -46,6 +46,12 @@ export const POPULAR_CATEGORIES: Circle[] = [
   { title: "Health & Beauty", image: "/images/emox/categories/beauty.jpg" },
   { title: "Groceries", image: "/images/emox/categories/groceries.jpg" },
   { title: "Sneakers", image: "/images/emox/categories/sneakers.jpg" },
+  { title: "Mobiles", image: "/images/emox/electronics/iphone.jpg" },
+  { title: "Laptops", image: "/images/emox/electronics/macbook.jpg" },
+  { title: "Audio", image: "/images/emox/electronics/earbuds.jpg" },
+  { title: "Watches", image: "/images/emox/categories/watches.jpg" },
+  { title: "Jewelry", image: "/images/emox/deals/earrings.jpg" },
+  { title: "Toys", image: "/images/emox/categories/toys.jpg" },
 ];
 
 /* ---------- Product ---------- */
@@ -98,6 +104,42 @@ export const BEST_DEALS: Product[] = [
     rating: 4,
     reviews: "157",
   },
+  {
+    image: "/images/emox/products/speaker.jpg",
+    name: "Bose SoundLink Bluetooth Speaker",
+    price: 89.0,
+    oldPrice: 119.0,
+    rating: 4.5,
+    reviews: "1.2k",
+  },
+  {
+    image: "/images/emox/products/backpack.jpg",
+    name: "Anker Travel Backpack 30L",
+    price: 145.0,
+    rating: 4,
+    reviews: "320",
+  },
+  {
+    image: "/images/emox/electronics/earbuds.jpg",
+    name: "Sony WH-1000XM5 Wireless Headphones",
+    price: 349.0,
+    rating: 4.5,
+    reviews: "8k",
+  },
+  {
+    image: "/images/emox/categories/luxury.jpg",
+    name: "Ray-Ban Aviator Classic Sunglasses",
+    price: 119.0,
+    rating: 4,
+    reviews: "1.5k",
+  },
+  {
+    image: "/images/emox/categories/sneakers.jpg",
+    name: "Adidas Ultraboost 23 Running Shoes",
+    price: 425.0,
+    rating: 4.5,
+    reviews: "1.2k",
+  },
 ];
 
 export const WINTER_WEAR: Product[] = [
@@ -137,6 +179,44 @@ export const WINTER_WEAR: Product[] = [
     price: 90.0,
     rating: 4.5,
     reviews: "20",
+  },
+  {
+    image: "/images/emox/winter/sweater.jpg",
+    name: "Cashmere Wool Scarf Premium",
+    price: 80.0,
+    oldPrice: 110.0,
+    rating: 4.5,
+    reviews: "542",
+  },
+  {
+    image: "/images/emox/winter/jacket.jpg",
+    name: "Insulated Puffer Vest",
+    price: 175.0,
+    rating: 4,
+    reviews: "98",
+  },
+  {
+    image: "/images/emox/categories/sneakers.jpg",
+    name: "Thermal Snow Boots Waterproof",
+    price: 199.0,
+    oldPrice: 259.0,
+    rating: 4.5,
+    reviews: "1.1k",
+  },
+  {
+    image: "/images/emox/winter/hoodie-dark.jpg",
+    name: "Knitted Beanie Hat 3-Pack",
+    price: 25.0,
+    rating: 4,
+    reviews: "456",
+  },
+  {
+    image: "/images/emox/beauty/serum.jpg",
+    name: "Winter Lip Balm & Hand Cream Set",
+    price: 22.0,
+    oldPrice: 35.0,
+    rating: 4.5,
+    reviews: "230",
   },
 ];
 
@@ -179,6 +259,43 @@ export const TOP_ELECTRONICS: Product[] = [
     rating: 4,
     reviews: "587",
   },
+  {
+    image: "/images/emox/products/smartwatch.jpg",
+    name: "Apple Watch Ultra 2 49mm Titanium",
+    price: 1399.0,
+    rating: 4.5,
+    reviews: "892",
+  },
+  {
+    image: "/images/emox/products/keyboard.jpg",
+    name: "Logitech MX Master Mechanical Keyboard",
+    price: 199.0,
+    oldPrice: 249.0,
+    rating: 4.5,
+    reviews: "850",
+  },
+  {
+    image: "/images/emox/electronics/macbook.jpg",
+    name: "Samsung Galaxy Tab S10+ 12.4\" 256GB",
+    price: 749.0,
+    rating: 4,
+    reviews: "318",
+  },
+  {
+    image: "/images/emox/electronics/ssd.jpg",
+    name: "WD My Passport 4TB Portable Drive",
+    price: 159.0,
+    oldPrice: 189.0,
+    rating: 4,
+    reviews: "212",
+  },
+  {
+    image: "/images/emox/electronics/earbuds.jpg",
+    name: "Bose QuietComfort 45 Headphones",
+    price: 449.0,
+    rating: 4.5,
+    reviews: "1.8k",
+  },
 ];
 
 export const BEST_BEAUTY: Product[] = [
@@ -216,6 +333,43 @@ export const BEST_BEAUTY: Product[] = [
     price: 24.0,
     rating: 4.5,
     reviews: "321",
+  },
+  {
+    image: "/images/emox/products/hairdryer.jpg",
+    name: "Dyson Supersonic Hair Dryer",
+    price: 1599.0,
+    oldPrice: 1799.0,
+    rating: 4.5,
+    reviews: "1.4k",
+  },
+  {
+    image: "/images/emox/products/toothbrush.jpg",
+    name: "Oral-B iO Series 9 Electric Toothbrush",
+    price: 489.0,
+    oldPrice: 599.0,
+    rating: 4.5,
+    reviews: "623",
+  },
+  {
+    image: "/images/emox/beauty/serum.jpg",
+    name: "The Ordinary Niacinamide 10% + Zinc 1%",
+    price: 28.0,
+    rating: 4.5,
+    reviews: "5.2k",
+  },
+  {
+    image: "/images/emox/beauty/perfume.jpg",
+    name: "Estée Lauder Advanced Night Repair Serum",
+    price: 290.0,
+    rating: 4.5,
+    reviews: "892",
+  },
+  {
+    image: "/images/emox/beauty/foundation.jpg",
+    name: "La Mer The Treatment Lotion 150ml",
+    price: 535.0,
+    rating: 4.5,
+    reviews: "318",
   },
 ];
 

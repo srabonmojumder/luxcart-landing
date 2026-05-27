@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Zap, ArrowRight } from "lucide-react";
 
 type Slide = {
   eyebrow: string;
@@ -26,14 +26,14 @@ const SLIDES: Slide[] = [
   },
   {
     eyebrow: "Apple MacBook Air",
-    title: "Only 500.00 AED",
+    title: "Only $500.00",
     sub: "Lightweight power meets all-day battery. Work, play, create anywhere.",
     image: "/images/emox/electronics/macbook.jpg",
     bg: "from-[#1f2b4d] via-[#243a6b] to-[#0f1a33]",
   },
   {
     eyebrow: "Samsung Galaxy S24 Ultra",
-    title: "999.99 AED",
+    title: "$999.99",
     sub: "Galaxy AI is here. 512GB · Titanium Gray. Biggest deal of the season.",
     image: "/images/emox/deals/galaxy-ultra.jpg",
     bg: "from-[#0f766e] via-[#0d9488] to-[#115e59]",
@@ -64,7 +64,7 @@ export default function HeroBanners() {
 
   return (
     <section id="home" className="bg-white dark:bg-page-dark pt-5">
-      <div className="container max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div className="container max-w-[1280px] mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-[1.95fr_1fr] gap-4">
           {/* ===== Slider ===== */}
           <div
@@ -138,22 +138,64 @@ export default function HeroBanners() {
             </button>
           </div>
 
-          {/* ===== Small banner: Puma sale (static) ===== */}
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#2aa9e0] to-[#1f6fb2] min-h-[200px] sm:min-h-[300px]">
-            <div className="relative z-10 p-6">
-              <p className="text-white/90 text-[12px] font-semibold tracking-wide">SALE</p>
-              <p className="text-white text-[12px] font-medium uppercase tracking-[.18em] mt-1">Up To</p>
-              <p className="font-display font-extrabold text-white text-[44px] sm:text-[52px] leading-none">50%</p>
-              <p className="font-display font-bold text-white text-[20px] sm:text-[24px] leading-none">OFF</p>
+          {/* ===== Small banner: Flash Sale ===== */}
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0ea5e9] via-[#0284c7] to-[#1e3a8a] min-h-[260px] sm:min-h-[300px] p-6 flex flex-col">
+            {/* Decorative dot pattern */}
+            <div
+              className="absolute inset-0 opacity-[0.12] pointer-events-none"
+              style={{
+                backgroundImage: "radial-gradient(circle, white 1px, transparent 1.2px)",
+                backgroundSize: "18px 18px",
+              }}
+              aria-hidden="true"
+            />
+            {/* Amber glow */}
+            <div
+              className="absolute -top-16 -right-12 w-48 h-48 rounded-full bg-amber-300/30 blur-3xl pointer-events-none"
+              aria-hidden="true"
+            />
+
+            {/* Flash Sale tag */}
+            <span className="relative z-10 inline-flex items-center gap-1 w-fit px-2.5 py-1 rounded-full bg-amber-300 text-[#0c4a6e] text-[10px] font-extrabold uppercase tracking-wider">
+              <Zap size={11} className="fill-current" aria-hidden="true" /> Flash Sale
+            </span>
+
+            {/* Big discount */}
+            <div className="relative z-10 flex-1 flex flex-col justify-center mt-2">
+              <p className="font-display text-white/85 text-[11px] font-bold uppercase tracking-[.22em]">Up To</p>
+              <div className="flex items-start">
+                <span className="font-display font-black text-white text-[68px] sm:text-[82px] leading-[0.9] drop-shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
+                  50
+                </span>
+                <span className="font-display font-extrabold text-amber-300 text-[34px] sm:text-[40px] leading-[1.4]">
+                  %
+                </span>
+              </div>
+              <p className="font-display font-bold text-white text-[15px] sm:text-[17px] tracking-[.16em] -mt-1">
+                OFF SNEAKERS
+              </p>
             </div>
-            <div className="absolute bottom-0 right-0 left-0 h-[55%]">
-              <Image
-                src="/images/emox/hero/shoe.jpg"
-                alt="Puma sale sneaker"
-                fill
-                sizes="380px"
-                className="object-cover object-center"
-              />
+
+            {/* CTA */}
+            <a
+              href="#deals"
+              className="relative z-10 inline-flex w-fit items-center gap-1.5 rounded-full bg-white text-[#0c4a6e] px-5 py-2 text-[12.5px] font-bold hover:bg-amber-300 transition-colors shadow-lg shadow-black/10"
+            >
+              Shop Now <ArrowRight size={13} strokeWidth={2.5} aria-hidden="true" />
+            </a>
+
+            {/* Floating circular shoe accent */}
+            <div className="absolute -bottom-6 -right-6 w-[36%] max-w-[140px] aspect-square pointer-events-none">
+              <div className="absolute inset-0 rounded-full bg-amber-300/30 blur-2xl" />
+              <div className="relative w-full h-full rounded-full overflow-hidden ring-4 ring-white/30 shadow-2xl rotate-12">
+                <Image
+                  src="/images/emox/hero/shoe.jpg"
+                  alt=""
+                  fill
+                  sizes="140px"
+                  className="object-cover object-center"
+                />
+              </div>
             </div>
           </div>
         </div>

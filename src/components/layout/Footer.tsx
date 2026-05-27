@@ -6,7 +6,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#0b1020] text-white/70 pt-14 pb-8">
-      <div className="container max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div className="container max-w-[1280px] mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-10 pb-10 border-b border-white/10">
           {/* Brand */}
           <div className="col-span-2 md:col-span-3 lg:col-span-4">
@@ -17,11 +17,11 @@ export default function Footer() {
               The Middle East&apos;s everyday marketplace — millions of products, fast delivery across the UAE, and AI-powered shopping.
             </p>
             <div className="flex flex-col gap-2 mt-5 text-sm">
-              <a href="mailto:support@luxecart.ae" className="inline-flex items-center gap-2 hover:text-white transition-colors">
-                <Mail size={15} aria-hidden="true" /> support@luxecart.ae
+              <a href="mailto:hello@luxecart.com" className="inline-flex items-center gap-2 hover:text-white transition-colors">
+                <Mail size={15} aria-hidden="true" /> hello@luxecart.com
               </a>
-              <a href="tel:+97140000000" className="inline-flex items-center gap-2 hover:text-white transition-colors">
-                <Phone size={15} aria-hidden="true" /> +971 4 000 0000
+              <a href="tel:+971501234567" className="inline-flex items-center gap-2 hover:text-white transition-colors">
+                <Phone size={15} aria-hidden="true" /> +971 50 123 4567
               </a>
               <span className="inline-flex items-center gap-2">
                 <MapPin size={15} aria-hidden="true" /> Dubai, United Arab Emirates

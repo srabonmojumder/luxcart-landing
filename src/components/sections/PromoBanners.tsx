@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function PromoBanners() {
   return (
     <section className="bg-white dark:bg-page-dark py-6">
-      <div className="container max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div className="container max-w-[1280px] mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* ===== Vegetables ===== */}
           <article className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#e0367d] to-[#b8246a] min-h-[230px] p-6" data-reveal>

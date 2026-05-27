@@ -74,7 +74,7 @@ export default function AiBanner() {
       className="py-[clamp(48px,8vw,96px)] bg-page dark:bg-page-dark scroll-mt-32"
       aria-label="AI-powered product search"
     >
-      <div className="container max-w-[1200px] mx-auto px-4 sm:px-6" data-reveal>
+      <div className="container max-w-[1280px] mx-auto px-4 sm:px-6" data-reveal>
         {/* Gradient border wrapper */}
         <div className="p-[2px] rounded-[28px] bg-gradient-to-r from-brand-accent via-brand to-amber-400 shadow-big">
           <div className="relative h-[clamp(460px,56vw,600px)] overflow-hidden rounded-[26px] bg-page dark:bg-page-dark">
@@ -205,8 +205,7 @@ export default function AiBanner() {
                                     </span>
                                   </span>
                                   <span className="font-display font-bold text-[14px] text-ink dark:text-white whitespace-nowrap">
-                                    {product.price.toFixed(2)}
-                                    <sup className="ml-0.5 text-[9px] font-semibold text-ink-mute align-super">AED</sup>
+                                    ${product.price.toFixed(2)}
                                   </span>
                                 </a>
                               </li>
