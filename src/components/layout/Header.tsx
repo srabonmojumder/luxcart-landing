@@ -223,10 +223,10 @@ export default function Header() {
               </a>
 
               {/* Sign in */}
-              <button type="button" className="hidden sm:flex items-center gap-1.5 text-[13px] font-semibold text-ink dark:text-white hover:text-brand transition-colors">
+              <a href="https://luxecart-store.web.app/" className="hidden sm:flex items-center gap-1.5 text-[13px] font-semibold text-ink dark:text-white hover:text-brand transition-colors">
                 <User size={20} strokeWidth={2} aria-hidden="true" />
                 Sign In
-              </button>
+              </a>
 
               {/* Hamburger (mobile/tablet) */}
               <button
@@ -340,9 +340,9 @@ export default function Header() {
 
         <nav className="flex-1 overflow-y-auto p-4">
           <div className="flex gap-3 mb-5">
-            <button type="button" className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-brand text-white text-sm font-semibold">
+            <a href="https://luxecart-store.web.app/" onClick={closeDrawer} className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-brand text-white text-sm font-semibold">
               <User size={16} aria-hidden="true" /> Sign In
-            </button>
+            </a>
             <button type="button" className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl border border-line text-sm font-semibold text-ink dark:text-white">
               <Flag code={countryCode} /> {countryCode}
             </button>
