@@ -16,12 +16,13 @@ const config: Config = {
         "4.5": "1.125rem",
       },
       colors: {
+        // Aligned with the LuxeCart store palette (accent #46AEE8 sky-blue).
         brand: {
-          DEFAULT: "#4f6dff",
-          strong: "#3a55e6",
-          soft: "#eaeeff",
-          accent: "#8a5bff",
-          cyan: "#22d3ee",
+          DEFAULT: "#46aee8",
+          strong: "#2d90cd",
+          soft: "#daf0fc",
+          accent: "#2575a6",
+          cyan: "#8ed5f6",
         },
         ink: {
           DEFAULT: "#0b1020",
@@ -46,23 +47,24 @@ const config: Config = {
         },
       },
       fontFamily: {
+        // Display headings echo the store's Afacad; body stays on Inter for readability.
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-space-grotesk)", "var(--font-inter)", "sans-serif"],
+        display: ["var(--font-afacad)", "var(--font-inter)", "sans-serif"],
         mono: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"],
       },
       boxShadow: {
         soft: "0 4px 16px rgba(15,23,42,.07), 0 2px 4px rgba(15,23,42,.04)",
         big: "0 24px 60px -20px rgba(15,23,42,.25), 0 10px 24px -12px rgba(15,23,42,.15)",
-        glow: "0 30px 80px -30px rgba(79,109,255,.55)",
+        glow: "0 30px 80px -30px rgba(70,174,232,.55)",
         "big-dark": "0 30px 70px -20px rgba(0,0,0,.65), 0 12px 28px -10px rgba(0,0,0,.5)",
       },
       backgroundImage: {
-        "grad-primary": "linear-gradient(135deg, #5b8dff 0%, #8a5bff 100%)",
-        "grad-text": "linear-gradient(135deg, #5b8dff 0%, #8a5bff 60%, #22d3ee 100%)",
+        "grad-primary": "linear-gradient(135deg, #59bdef 0%, #2575a6 100%)",
+        "grad-text": "linear-gradient(135deg, #59bdef 0%, #2d90cd 55%, #2575a6 100%)",
         "grad-hero-light":
-          "radial-gradient(ellipse at top right, rgba(138,91,255,.14), transparent 55%), radial-gradient(ellipse at bottom left, rgba(79,109,255,.12), transparent 55%)",
+          "radial-gradient(ellipse at top right, rgba(70,174,232,.16), transparent 55%), radial-gradient(ellipse at bottom left, rgba(45,144,205,.12), transparent 55%)",
         "grad-hero-dark":
-          "radial-gradient(ellipse at top right, rgba(138,91,255,.25), transparent 55%), radial-gradient(ellipse at bottom left, rgba(34,211,238,.14), transparent 55%)",
+          "radial-gradient(ellipse at top right, rgba(70,174,232,.26), transparent 55%), radial-gradient(ellipse at bottom left, rgba(142,213,246,.14), transparent 55%)",
       },
       animation: {
         "pulse-dot": "pulseDot 2.4s ease-in-out infinite",

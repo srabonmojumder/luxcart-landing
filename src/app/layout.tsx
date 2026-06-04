@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Inter, Afacad, JetBrains_Mono } from "next/font/google";
 import { CartProvider } from "@/lib/cart";
 import { SITE_URL, SITE_NAME } from "@/lib/seo";
 import "./globals.css";
@@ -11,10 +11,11 @@ const inter = Inter({
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
+// Afacad — the LuxeCart store's display typeface, used here for headings.
+const afacad = Afacad({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-space-grotesk",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-afacad",
   display: "swap",
 });
 
@@ -74,7 +75,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon:
-      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234f6dff' d='M5 7h14a1 1 0 0 1 1 .94l.93 11.99A2 2 0 0 1 18.94 22H5.06a2 2 0 0 1-1.99-2.07L4 7.94A1 1 0 0 1 5 7z'/%3E%3Cpath fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' d='M8.5 9V7a3.5 3.5 0 0 1 7 0v2'/%3E%3C/svg%3E",
+      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2346aee8' d='M5 7h14a1 1 0 0 1 1 .94l.93 11.99A2 2 0 0 1 18.94 22H5.06a2 2 0 0 1-1.99-2.07L4 7.94A1 1 0 0 1 5 7z'/%3E%3Cpath fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' d='M8.5 9V7a3.5 3.5 0 0 1 7 0v2'/%3E%3C/svg%3E",
   },
 };
 
@@ -99,7 +100,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`scroll-smooth ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+      className={`scroll-smooth ${inter.variable} ${afacad.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>

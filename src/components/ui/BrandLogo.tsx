@@ -10,8 +10,8 @@ export default function BrandLogo({ className, gradientId = "brandLogoGrad" }: B
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
       <defs>
         <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#5b8dff" />
-          <stop offset="100%" stopColor="#8a5bff" />
+          <stop offset="0%" stopColor="#59bdef" />
+          <stop offset="100%" stopColor="#2575a6" />
         </linearGradient>
       </defs>
       {/* Bag body */}

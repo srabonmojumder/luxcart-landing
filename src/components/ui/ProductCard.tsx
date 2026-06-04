@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Star, StarHalf, Heart, ShoppingBag, Check } from "lucide-react";
 import { useCart } from "@/lib/cart";
 import type { Product } from "@/lib/site-data";
+import { STORE_PRODUCTS } from "@/lib/store";
 
 function Stars({ rating }: { rating: number }) {
   const full = Math.floor(rating);
@@ -39,7 +40,9 @@ export default function ProductCard({ product }: { product: Product }) {
   const discount = oldPrice ? Math.round((1 - price / oldPrice) * 100) : 0;
 
   return (
-    <article
+    <a
+      href={STORE_PRODUCTS}
+      aria-label={`View ${name} on LuxeCart`}
       data-reveal
       className="group relative flex flex-col cursor-pointer bg-white dark:bg-surface-dark transition-transform duration-300 hover:-translate-y-1"
     >
@@ -127,6 +130,6 @@ export default function ProductCard({ product }: { product: Product }) {
           )}
         </div>
       </div>
-    </article>
+    </a>
   );
 }

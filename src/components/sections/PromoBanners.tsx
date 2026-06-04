@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { storeCategoryLink } from "@/lib/store";
 
 export default function PromoBanners() {
   return (
@@ -26,7 +27,7 @@ export default function PromoBanners() {
               height={260}
               className="absolute bottom-0 right-0 w-[62%] h-[55%] object-cover object-center opacity-95 [mask-image:linear-gradient(to_left,#000_70%,transparent)]"
             />
-            <a href="#deals" className="absolute bottom-5 left-6 z-10 inline-flex items-center rounded-full bg-[#1a1740] px-5 py-2 text-[12px] font-semibold text-white hover:bg-black transition-colors">
+            <a href={storeCategoryLink("Groceries")} className="absolute bottom-5 left-6 z-10 inline-flex items-center rounded-full bg-ink px-5 py-2 text-[12px] font-semibold text-white hover:bg-black transition-colors">
               Shop now
             </a>
           </article>
@@ -47,7 +48,7 @@ export default function PromoBanners() {
               height={200}
               className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[58%] h-[48%] object-contain"
             />
-            <a href="#electronics" className="absolute bottom-5 left-6 z-10 inline-flex items-center rounded-full bg-[#1a2740] px-5 py-2 text-[12px] font-semibold text-white hover:bg-black transition-colors">
+            <a href={storeCategoryLink("Electronics")} className="absolute bottom-5 left-6 z-10 inline-flex items-center rounded-full bg-ink px-5 py-2 text-[12px] font-semibold text-white hover:bg-black transition-colors">
               Shop now
             </a>
           </article>
@@ -69,7 +70,7 @@ export default function PromoBanners() {
               height={240}
               className="absolute bottom-0 left-0 right-0 w-full h-[52%] object-cover object-center [mask-image:linear-gradient(to_top,#000_75%,transparent)]"
             />
-            <a href="#deals" className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 inline-flex items-center rounded-full bg-amber-300 px-5 py-2 text-[12px] font-semibold text-[#b01515] hover:brightness-105 transition-all">
+            <a href={storeCategoryLink("Groceries")} className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 inline-flex items-center rounded-full bg-amber-300 px-5 py-2 text-[12px] font-semibold text-[#b01515] hover:brightness-105 transition-all">
               Shop now
             </a>
           </article>

@@ -4,14 +4,17 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ProductCard from "@/components/ui/ProductCard";
 import type { Product } from "@/lib/site-data";
+import { STORE_URL } from "@/lib/store";
 
 export default function DealRow({
   id,
   title,
+  eyebrow,
   products,
 }: {
   id?: string;
   title: string;
+  eyebrow?: string;
   products: Product[];
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -62,9 +65,21 @@ export default function DealRow({
   return (
     <section id={id} className="bg-white dark:bg-page-dark py-8 scroll-mt-32">
       <div className="container max-w-[1280px] mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between mb-5">
-          <h2 className="font-display font-bold text-[20px] sm:text-[22px] text-ink dark:text-white">{title}</h2>
-          <a href="#deals" className="flex items-center gap-1 text-[13px] font-semibold text-brand hover:underline">
+        <div className="flex items-end justify-between mb-6">
+          <div>
+            {eyebrow && (
+              <span className="block text-brand font-black tracking-[0.28em] text-[10px] sm:text-[11px] uppercase mb-1.5">
+                {eyebrow}
+              </span>
+            )}
+            <h2 className="font-display font-black text-[26px] sm:text-[34px] leading-none tracking-tighter text-ink dark:text-white">
+              {title}
+            </h2>
+          </div>
+          <a
+            href={STORE_URL}
+            className="flex items-center gap-1 text-[12px] sm:text-[13px] font-black uppercase tracking-[0.12em] text-brand hover:gap-2 transition-all whitespace-nowrap"
+          >
             View All <ChevronRight size={15} strokeWidth={2.5} aria-hidden="true" />
           </a>
         </div>

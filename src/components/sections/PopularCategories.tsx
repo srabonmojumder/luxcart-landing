@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { POPULAR_CATEGORIES } from "@/lib/site-data";
+import { STORE_PRODUCTS, storeCategoryLink } from "@/lib/store";
 
 export default function PopularCategories() {
   const ref = useRef<HTMLDivElement>(null);
@@ -40,7 +41,7 @@ export default function PopularCategories() {
           <h2 className="font-display font-bold text-[20px] sm:text-[22px] text-ink dark:text-white">
             Explore Popular Categories
           </h2>
-          <a href="#categories" className="flex items-center gap-1 text-[13px] font-semibold text-brand hover:underline">
+          <a href={STORE_PRODUCTS} className="flex items-center gap-1 text-[13px] font-semibold text-brand hover:underline">
             View All <ChevronRight size={15} strokeWidth={2.5} aria-hidden="true" />
           </a>
         </div>
@@ -63,7 +64,7 @@ export default function PopularCategories() {
             {POPULAR_CATEGORIES.map((c) => (
               <a
                 key={c.title}
-                href="#deals"
+                href={storeCategoryLink(c.title)}
                 className="group flex flex-col items-center gap-2.5 flex-none"
                 data-reveal
               >

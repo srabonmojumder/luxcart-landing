@@ -120,7 +120,7 @@ export default function AiBanner() {
               <div className="w-full max-w-[640px] text-center">
                 {/* Logo */}
                 <div className="inline-flex items-center gap-2.5 mb-3">
-                  <span className="grid place-items-center w-9 h-9 rounded-[10px] bg-gradient-to-br from-[#5b8dff]/15 to-[#8a5bff]/15">
+                  <span className="grid place-items-center w-9 h-9 rounded-[10px] bg-gradient-to-br from-[#59bdef]/15 to-[#2575a6]/15">
                     <BrandLogo className="w-[26px] h-[26px]" gradientId="logoAi" />
                   </span>
                   <span className="font-display font-bold tracking-tight text-[clamp(26px,4.5vw,40px)] leading-none text-ink dark:text-white">
@@ -140,7 +140,7 @@ export default function AiBanner() {
                   <form
                     onSubmit={(e) => e.preventDefault()}
                     role="search"
-                    className="relative p-[2px] rounded-full bg-gradient-to-r from-brand via-brand-accent to-brand-cyan shadow-[0_12px_40px_-12px_rgba(79,109,255,.55)]"
+                    className="relative p-[2px] rounded-full bg-gradient-to-r from-brand via-brand-accent to-brand-cyan shadow-[0_12px_40px_-12px_rgba(70,174,232,.55)]"
                   >
                     <div className="search-field flex items-center gap-3 h-14 pl-4 pr-2.5 rounded-full bg-white dark:bg-surface-dark">
                       <Sparkles size={20} strokeWidth={2} className="text-brand flex-none" aria-hidden="true" />

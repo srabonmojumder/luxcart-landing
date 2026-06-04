@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Zap, ArrowRight } from "lucide-react";
+import { STORE_PRODUCTS } from "@/lib/store";
 
 type Slide = {
   eyebrow: string;
@@ -21,7 +22,7 @@ const SLIDES: Slide[] = [
     sub: "A18 chip. Superfast. Supersmart. History, Biggest Price Drop",
     note: "*Incl. All Offers",
     image: "/images/emox/hero/phone.jpg",
-    bg: "from-[#5b4bd6] via-[#6d4bd1] to-[#3b3a8f]",
+    bg: "from-[#2575a6] via-[#2d90cd] to-[#16344a]",
     clock: true,
   },
   {
@@ -29,21 +30,21 @@ const SLIDES: Slide[] = [
     title: "Only $500.00",
     sub: "Lightweight power meets all-day battery. Work, play, create anywhere.",
     image: "/images/emox/electronics/macbook.jpg",
-    bg: "from-[#1f2b4d] via-[#243a6b] to-[#0f1a33]",
+    bg: "from-[#16344a] via-[#245371] to-[#0b1f2e]",
   },
   {
     eyebrow: "Samsung Galaxy S24 Ultra",
     title: "$999.99",
     sub: "Galaxy AI is here. 512GB · Titanium Gray. Biggest deal of the season.",
     image: "/images/emox/deals/galaxy-ultra.jpg",
-    bg: "from-[#0f766e] via-[#0d9488] to-[#115e59]",
+    bg: "from-[#256288] via-[#2d90cd] to-[#16344a]",
   },
   {
     eyebrow: "Crystal UHD Smart TV",
     title: "Up to 40% Off",
     sub: "Upgrade your living room with the Samsung 65\" Crystal UHD experience.",
     image: "/images/emox/electronics/tv.jpg",
-    bg: "from-[#b45309] via-[#d97706] to-[#92400e]",
+    bg: "from-[#2d90cd] via-[#46aee8] to-[#2575a6]",
   },
 ];
 
@@ -90,8 +91,8 @@ export default function HeroBanners() {
                     </p>
                     <p className="text-white/75 text-[12px] sm:text-[13px] leading-relaxed mt-2 max-w-[280px]">{s.sub}</p>
                     <a
-                      href="#deals"
-                      className="mt-5 inline-flex w-fit items-center rounded-full bg-[#1a1740] px-6 py-2.5 text-[13px] font-semibold text-white hover:bg-black transition-colors"
+                      href={STORE_PRODUCTS}
+                      className="mt-5 inline-flex w-fit items-center rounded-full bg-ink px-6 py-2.5 text-[13px] font-semibold text-white hover:bg-black transition-colors"
                     >
                       Shop Now
                     </a>
@@ -178,7 +179,7 @@ export default function HeroBanners() {
 
             {/* CTA */}
             <a
-              href="#deals"
+              href={STORE_PRODUCTS}
               className="relative z-10 inline-flex w-fit items-center gap-1.5 rounded-full bg-white text-[#0c4a6e] px-5 py-2 text-[12.5px] font-bold hover:bg-amber-300 transition-colors shadow-lg shadow-black/10"
             >
               Shop Now <ArrowRight size={13} strokeWidth={2.5} aria-hidden="true" />

@@ -11,7 +11,7 @@
     @apply inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-semibold text-[14.5px] leading-none whitespace-nowrap transition-all duration-200 cursor-pointer no-underline;
   }
   .btn-primary {
-    @apply bg-grad-primary text-white shadow-[0_8px_24px_-8px_rgba(79,109,255,.55)] hover:-translate-y-0.5 hover:brightness-105 hover:shadow-[0_14px_32px_-10px_rgba(79,109,255,.65)] hover:text-white;
+    @apply bg-grad-primary text-white shadow-[0_8px_24px_-8px_rgba(70,174,232,.55)] hover:-translate-y-0.5 hover:brightness-105 hover:shadow-[0_14px_32px_-10px_rgba(70,174,232,.65)] hover:text-white;
   }
   .btn-ghost {
     @apply bg-transparent border border-line-strong text-ink dark:text-white dark:border-line-dark-strong hover:-translate-y-0.5 hover:bg-page-alt dark:hover:bg-page-dark-alt hover:border-brand;
@@ -42,7 +42,7 @@
   }
   .field-input:focus {
     @apply border-brand;
-    box-shadow: 0 0 0 4px rgba(79, 109, 255, 0.12);
+    box-shadow: 0 0 0 4px rgba(70, 174, 232, 0.14);
   }
   .field-input.has-error {
     @apply border-red-500;
@@ -77,15 +77,15 @@ html {
 
 /* ---------- Hero grid overlay (masked grid pattern) ---------- */
 .hero-grid {
-  background-image: linear-gradient(to right, rgba(79, 109, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(79, 109, 255, 0.07) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(70, 174, 232, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(70, 174, 232, 0.08) 1px, transparent 1px);
   background-size: 48px 48px;
   -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
   mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
 }
 .dark .hero-grid {
-  background-image: linear-gradient(to right, rgba(138, 91, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(138, 91, 255, 0.1) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(70, 174, 232, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(70, 174, 232, 0.12) 1px, transparent 1px);
 }
 
 /* ---------- Navbar scrolled state ---------- */
@@ -140,11 +140,11 @@ body.drawer-open {
 /* ---------- Active nav link ---------- */
 .nav-link.active {
   color: #0b1020;
-  background-color: #eaeeff;
+  background-color: #daf0fc;
 }
 .dark .nav-link.active {
   color: #ffffff;
-  background-color: rgba(79, 109, 255, 0.15);
+  background-color: rgba(70, 174, 232, 0.18);
 }
 
 /* ---------- Reveal animation entrance ---------- */
@@ -209,13 +209,13 @@ body.drawer-open {
 
 /* ---------- Selection ---------- */
 ::selection {
-  background: rgba(79, 109, 255, 0.25);
+  background: rgba(70, 174, 232, 0.28);
   color: inherit;
 }
 
 /* ---------- Focus visible (consistent across UA) ---------- */
 :focus-visible {
-  outline: 2px solid #4f6dff;
+  outline: 2px solid #46aee8;
   outline-offset: 3px;
   border-radius: 6px;
 }
