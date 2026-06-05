@@ -65,10 +65,10 @@ function Counter({ value, decimals = 0, suffix }: { value: number; decimals?: nu
 export default function StatsBar() {
   return (
     <section className="mt-4 mx-4 md:mx-8">
-      <div className="relative overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-gradient-to-br from-[#245371] via-[#256288] to-[#16344a] px-6 py-14 md:py-20">
+      <div className="relative overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-gradient-to-br from-[#1d4e6e] via-[#143049] to-[#0a1d2e] px-6 py-14 md:py-20">
         {/* Decorative glow orbs */}
-        <div className="absolute -top-28 -left-20 w-80 h-80 rounded-full bg-brand/30 blur-[100px]" aria-hidden="true" />
-        <div className="absolute -bottom-28 -right-20 w-80 h-80 rounded-full bg-brand/20 blur-[100px]" aria-hidden="true" />
+        <div className="absolute -top-32 -left-24 w-96 h-96 rounded-full bg-brand/40 blur-[110px]" aria-hidden="true" />
+        <div className="absolute -bottom-32 -right-24 w-96 h-96 rounded-full bg-brand-cyan/25 blur-[110px]" aria-hidden="true" />
         {/* Dot grid */}
         <div
           className="absolute inset-0 opacity-[0.06]"
@@ -84,20 +84,21 @@ export default function StatsBar() {
             <h2 className="font-display text-3xl md:text-5xl font-black text-white tracking-tighter">The Numbers Speak</h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
+          {/* Clean inline bar — 4 stats in a row, separated by thin dividers */}
+          <div className="grid grid-cols-2 gap-y-12 md:flex md:items-stretch md:gap-0">
             {STATS.map((s) => (
               <div
                 key={s.label}
                 data-reveal
-                className="group relative rounded-3xl bg-white/[0.04] backdrop-blur-sm border border-white/10 p-6 md:p-8 text-center transition-all duration-300 hover:bg-white/[0.07] hover:border-brand/40 hover:-translate-y-1"
+                className="group flex flex-1 flex-col items-center text-center px-4 md:px-6 md:border-l md:border-white/15 md:first:border-l-0"
               >
-                <div className="grid place-items-center w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br from-brand to-brand-strong mx-auto mb-5 shadow-lg shadow-brand/30 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                  <s.icon className="w-6 h-6 text-white" aria-hidden="true" />
-                </div>
-                <span className="block font-display text-4xl md:text-6xl font-black tracking-tighter bg-gradient-to-b from-white to-brand-cyan bg-clip-text text-transparent">
+                <span className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-white/10 ring-1 ring-white/15 mb-5 transition-colors duration-300 group-hover:bg-brand/20 group-hover:ring-brand/40">
+                  <s.icon className="w-[22px] h-[22px] text-brand-cyan" aria-hidden="true" />
+                </span>
+                <span className="font-display text-5xl md:text-[64px] font-black leading-none tracking-tighter text-white [text-shadow:0_2px_24px_rgba(70,174,232,0.45)]">
                   <Counter value={s.value} decimals={s.decimals} suffix={s.suffix} />
                 </span>
-                <p className="text-white/50 text-[10px] md:text-xs font-black tracking-[0.2em] uppercase mt-3">{s.label}</p>
+                <p className="mt-3.5 text-white/65 text-[11px] font-black tracking-[0.22em] uppercase">{s.label}</p>
               </div>
             ))}
           </div>
